@@ -1,0 +1,283 @@
+1) What will happen if the loop condition in a while loop is always True?
+ans : The loop keeps executing repeatedly.
+
+	The program never stops unless:
+	You manually interrupt it (for example: Ctrl + C in terminal), or
+	A break statement is used inside the loop, or
+	The program crashes due to resource usage (CPU/memory).
+
+		example :while True:
+    				print("Hello")
+
+2)  Can a for loop modify the sequence it is iterating over? What are the consequences?
+
+ans : Yes, a for loop can modify the sequence it is iterating over, 
+	but it may lead to skipped elements, unexpected behavior, or logical errors. 
+It is safer to iterate over a copy or use alternative methods like list comprehensions.
+
+
+3) ·      What is the output of a for loop with an else block when a break statement is executed?
+
+ans :When a break statement is executed in a for loop, the else block is skipped and does not execute.
+
+4)·      Is it possible to use a continue statement inside a while loop without causing an infinite loop?
+
+ans : Yes, it is possible to use continue inside a while loop without causing an infinite loop, provided the loop control variable is updated properly before the continue statement.
+
+5)❓ What happens if you modify the loop variable inside a for loop?
+
+👉 Modifying the loop variable inside a for loop usually does NOT affect the loop iteration because Python takes the next value from the iterable automatically.
+
+🔹 Example 1: Changing Loop Variable Has No Effect
+for i in range(5):
+    i = i + 2
+    print(i)
+
+Output:
+2
+3
+4
+5
+6
+
+Explanation:
+
+range(5) produces values: 0,1,2,3,4
+
+Even though i is modified inside the loop,
+
+The next iteration still assigns the next value from range()
+
+👉 The loop control is managed by the iterable, not by your reassignment.
+
+
+6)❓ Can a while loop have multiple conditions? How are they evaluated?
+
+👉 Yes, a while loop can have multiple conditions using logical operators like:
+
+and
+
+or
+
+not
+
+These conditions are evaluated as a Boolean expression.
+
+✅ Example Using and
+i = 1
+
+while i <= 5 and i != 3:
+    print(i)
+    i += 1
+
+Output:
+1
+2
+
+Explanation:
+
+Loop runs only if BOTH conditions are True:
+
+i <= 5 ✅
+
+i != 3 ✅
+
+When i = 3, second condition becomes False → loop stops.
+
+✅ Example Using or
+i = 1
+
+while i < 3 or i == 5:
+    print(i)
+    i += 1
+
+
+👉 Loop runs if ANY ONE condition is True.
+
+✅ Example Using not
+i = 1
+
+while not i > 3:
+    print(i)
+    i += 1
+
+Output:
+1
+2
+3
+
+🧠 How Are Conditions Evaluated?
+
+Python uses short-circuit evaluation:
+
+✔ and Operator:
+
+Stops checking if first condition is False
+
+✔ or Operator:
+
+Stops checking if first condition is True
+
+📌 Interview Answer (Short)
+
+Yes, a while loop can have multiple conditions combined using logical operators such as and, or, and not. These conditions are evaluated from left to right using short-circuit evaluation to determine whether the loop continues.
+
+
+7)·      What happens if the iterable in a for loop is empty?
+
+ans :If the iterable in a for loop is empty, the loop body is skipped and does not execute. If an else block is present, it will execute because the loop ends normally
+
+
+
+8)·      Is it possible to nest a while loop inside a for loop and vice versa?
+
+ans:📌 Interview Answer (Short)
+
+Yes, it is possible to nest a while loop inside a for loop and a for loop inside a while loop. This is known as nested looping and is commonly used to handle multi-dimensional data or repeated tasks.
+
+🧠 Real-World Use Cases
+
+Pattern printing
+
+Matrix operations
+
+Searching elements in 2D lists
+
+
+======================================================================================
+
+1) Here is a simple Python program to print numbers from 1 to 100 using a for loop:
+
+✅ Program:
+for i in range(1, 101):
+    print(i)
+
+🧠 Explanation:
+
+range(1, 101)
+
+Starts from 1
+
+Ends at 100 (101 is excluded)
+
+print(i) prints each number one by one.
+
+Comparing two lists
+
+
+2) Here’s a Python program to print even numbers between 1 and 50 using a while loop:
+
+✅ Program:
+num = 2  # Start from the first even number
+
+while num <= 50:
+    print(num)
+    num += 2  # Increment by 2 to get the next even number
+
+🧠 Explanation:
+
+Start with num = 2 (the first even number).
+
+Loop runs as long as num <= 50.
+
+Print the current number.
+
+Increment by 2 to move to the next even number.
+
+
+3) Here’s a Python program to reverse a number using a while loop:
+
+✅ Program:
+# Take input from user
+num = int(input("Enter a number: "))
+
+# Initialize variable to store reversed number
+reversed_num = 0
+
+# Temporary variable to manipulate the number
+temp = num
+
+while temp > 0:
+    digit = temp % 10             # Get last digit
+    reversed_num = reversed_num * 10 + digit  # Append digit
+    temp //= 10                   # Remove last digit
+
+print("Reversed number of", num, "is", reversed_num)
+
+🧠 How it Works:
+
+% 10 extracts the last digit.
+
+Multiply reversed_num by 10 and add the digit → appends it.
+
+// 10 removes the last digit.
+
+Repeat until the number becomes 0.
+
+📌 Example:
+
+Input: 1234
+Output:
+
+Reversed number of 1234 is 4321
+
+
+
+4) Here’s a Python program to count the number of vowels in a given string:
+
+✅ Program:
+# Take input from user
+text = input("Enter a string: ")
+
+# Initialize vowel count
+count = 0
+
+# Define vowels
+vowels = "aeiouAEIOU"
+
+# Loop through each character in the string
+for char in text:
+    if char in vowels:
+        count += 1
+
+print("Number of vowels in the string:", count)
+
+🧠 How It Works:
+
+Define a string vowels containing both lowercase and uppercase vowels.
+
+Loop through each character in the input string.
+
+Check if the character is in vowels.
+
+If yes, increment the counter.
+
+Print the final count.
+
+
+
+
+5) Here’s a Python program to find the factorial of a number using a for loop:
+
+✅ Program:
+# Take input from user
+num = int(input("Enter a number: "))
+
+# Initialize factorial
+factorial = 1
+
+# Loop from 1 to num
+for i in range(1, num + 1):
+    factorial *= i
+
+print("Factorial of", num, "is", factorial)
+
+🧠 How It Works:
+
+Factorial of n is n! = 1 × 2 × 3 × ... × n.
+
+Initialize factorial = 1.
+
+Multiply factorial with each number from 1 to num.
+
+Print the result.
